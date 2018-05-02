@@ -9,26 +9,25 @@ import java.sql.SQLException;
 
 	String name = "";
 	String password = "";
-	public void selectAll() {
-	DBConnector db = new DBConnector();
-	Connection con = db.getConnection();
-
-	String sql ="select * from test_table";
-	try {
+	public void selectByName(String name) {
+		DBConnector db = new DBConnector();
+		Connection con = db.getConnection();
+		String sql ="select * from test_table where user_name=?";
+		try {
 		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, name);
 		ResultSet rs=ps.executeQuery();
-		while(rs.next()){
-			System.out.println(rs.getString("user_name"));
-			System.out.println(rs.getString("password"));
+		while (rs.next()) {
+		System.out.println(rs.getString("user_name"));
+		System.out.println(rs.getString("password"));
 		}
-	} catch (SQLException e ) {
+		} catch (SQLException e ) {
 		e.printStackTrace();
-	}
-	try {
+		}
+		try {
 		con.close() ;
 		} catch (SQLException e ) {
-			e.printStackTrace();
+		e.printStackTrace();
+		}
 	}
 	}
-	}
-

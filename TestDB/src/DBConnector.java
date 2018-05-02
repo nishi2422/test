@@ -8,10 +8,9 @@
  */
 /*public class DBConnector {*/
 
+import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
-import com.mysql.jdbc.Connection;
 
 	/**
 	 * <p>MySQLに接続する為のユーティリティクラスです。<by>
